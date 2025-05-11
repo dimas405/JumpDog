@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34 24" width="34" height="24">
+  <!-- Body -->
+  <ellipse cx="17" cy="12" rx="14" ry="10" fill="#f8c471"/>
+  
+  <!-- Head details -->
+  <ellipse cx="25" cy="10" rx="8" ry="7" fill="#f8c471"/>
+  
+  <!-- Ears -->
+  <path d="M25 4 L28 1 L27 6 Z" fill="#d68910"/>
+  <path d="M24 3 L19 1 L22 6 Z" fill="#d68910"/>
+  
+  <!-- Eyes -->
+  <circle cx="23" cy="8" r="1.5" fill="#000"/>
+  <circle cx="28" cy="8" r="1.5" fill="#000"/>
+  
+  <!-- Reflection in eyes -->
+  <circle cx="23.5" cy="7.5" r="0.5" fill="#fff"/>
+  <circle cx="28.5" cy="7.5" r="0.5" fill="#fff"/>
+  
+  <!-- Nose -->
+  <ellipse cx="26" cy="11" rx="1.5" ry="1" fill="#000"/>
+  
+  <!-- Mouth -->
+  <path d="M24 12 Q26 14 28 12" fill="none" stroke="#000" stroke-width="0.7"/>
+  
+  <!-- Paws (raised up slightly for animation) -->
+  <ellipse cx="8" cy="17" rx="3" ry="2" fill="#d68910"/>
+  <ellipse cx="15" cy="17" rx="3" ry="2" fill="#d68910"/>
+</svg>

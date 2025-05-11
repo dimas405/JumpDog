@@ -1,0 +1,226 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  touch-action: manipulation;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -webkit-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+@font-face {
+  font-family: "VT323";
+  src: url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
+}
+
+body {
+  font-family: "Press Start 2P", "VT323", monospace;
+  background-color: #222034;
+  background-image: linear-gradient(#1a1a2e 1px, transparent 1px),
+    linear-gradient(90deg, #1a1a2e 1px, transparent 1px);
+  background-size: 20px 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  user-select: none;
+}
+
+.game-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  padding: 5px;
+  position: relative;
+}
+
+.title-container {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.title-container h1 {
+  position: relative;
+  top: 2rem;
+  font-family: "Press Start 2P", monospace;
+  color: #ffd700;
+  font-size: 18px;
+  text-shadow: 3px 3px 0 #000;
+  letter-spacing: 2px;
+  transform: translateZ(0);
+  animation: pixel-jump 1.5s infinite;
+}
+
+@keyframes pixel-jump {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+#canvas {
+  border: 4px solid #000;
+  border-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3AgSDhkb22MU+AAAAKRJREFUOMvtlEEOgzAMBMdRD+VV8BBOPfDlfFVeQSVETiCBHipoi2TTJk0OPdWH2F57bCllKO8joIJVVKvYqhGQAFtRh8O9We8F8dYiqku4B0JZA2ZRww2tCwTi2RSrViDO45g+9hA0YzcJJqaYfSIiT9MwTcZWSat5dK2qbmPf9/YYDlH6by8J9sZvT5A1NEZV5W7Vx3UIyG5eihB9DRyv6w+LmSeOtQ9XW/KZrgAAAABJRU5ErkJggg==")
+    4 stretch;
+  display: block;
+  margin: auto;
+  max-width: 100%;
+  height: auto;
+  touch-action: manipulation;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -webkit-crisp-edges;
+  image-rendering: crisp-edges;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+footer {
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+  color: #8bac0f;
+  font-family: "Press Start 2P", monospace;
+  margin-top: 10px;
+  text-shadow: 2px 2px 0px #000000;
+  letter-spacing: 1px;
+}
+
+footer a {
+  color: #8bac0f;
+  text-decoration: none;
+}
+
+/* Media Queries for different screen sizes */
+@media (max-width: 320px) {
+  #canvas {
+    width: 276px;
+    height: 414px;
+  }
+
+  .title-container h1 {
+    font-size: 14px;
+    top: 1rem;
+  }
+
+  footer {
+    font-size: 8px;
+  }
+}
+
+@media (min-width: 321px) and (max-width: 380px) {
+  #canvas {
+    width: 276px;
+    height: 414px;
+  }
+
+  .title-container h1 {
+    font-size: 16px;
+    top: 1.2rem;
+  }
+
+  footer {
+    font-size: 9px;
+  }
+}
+
+@media (min-width: 381px) and (max-width: 420px) {
+  #canvas {
+    width: 276px;
+    height: 414px;
+  }
+
+  .title-container h1 {
+    font-size: 18px;
+    top: 1.4rem;
+  }
+
+  footer {
+    font-size: 10px;
+  }
+}
+
+@media (min-width: 421px) and (max-width: 480px) {
+  #canvas {
+    width: 276px;
+    height: 414px;
+  }
+
+  footer {
+    font-size: 10px;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 560px) {
+  #canvas {
+    width: 276px;
+    height: 414px;
+  }
+
+  .title-container h1 {
+    font-size: 20px;
+  }
+
+  footer {
+    font-size: 11px;
+  }
+}
+
+@media (min-width: 561px) and (max-width: 670px) {
+  #canvas {
+    width: 276px;
+    height: 414px;
+  }
+
+  .title-container h1 {
+    font-size: 22px;
+  }
+
+  footer {
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 671px) {
+  #canvas {
+    width: 276px;
+    height: 414px;
+  }
+
+  .title-container h1 {
+    font-size: 24px;
+  }
+
+  footer {
+    font-size: 12px;
+  }
+}
+
+/* Landscape orientation adjustments */
+@media (orientation: landscape) and (max-height: 500px) {
+  #canvas {
+    height: 80vh;
+    width: auto;
+  }
+
+  .title-container {
+    margin-bottom: 5px;
+  }
+
+  .title-container h1 {
+    font-size: 14px;
+  }
+
+  footer {
+    padding: 5px;
+    font-size: 8px;
+  }
+}

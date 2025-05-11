@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JumpDog - Pixel Art Game</title>
+    <link rel="stylesheet" href="style.css"> 
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <div class="game-container">
+        <div class="title-container">
+            <h1>JUMPING DOG</h1>
+        </div>
+        <canvas id="canvas" width="276" height="414"></canvas>
+    </div>
+    <footer> <p>Created by <a href="https://github.com/dimas405"> Dimas A. Pradana</a></p></footer>
+    <script src="game.js"></script>
+    <script>
+        // Modify the UI to show scores in the bottom right
+        window.addEventListener('load', function() {
+            // Wait for the game to start loading
+            setTimeout(function() {
+                // Check if UI exists
+                if (typeof UI !== 'undefined') {
+                    // Save the original drawScore method
+                    const originalDrawScore = UI.drawScore;
+                    
+                    // Override the drawScore method
+                    UI.drawScore = function() {
+                        sctx.fillStyle = "#FFFFFF";
+                        sctx.strokeStyle = "#000000";
+                        
+                        switch (state.curr) {
+                            case state.Play:
+                                sctx.lineWidth = "2";
+                                sctx.font = "16px 'Press Start 2P'";
+                                sctx.textAlign = "right";
+                                sctx.fillText(this.score.curr, scrn.width - 10, scrn.height - 20);
+                                sctx.strokeText(this.score.curr, scrn.width - 10, scrn.height - 20);
+                                break;
+                                
+                            case state.gameOver:
+                                sctx.lineWidth = "2";
+                                sctx.font = "12px 'Press Start 2P'";
+                                sctx.textAlign = "right";
+                                
+                                // Get best score
+                                try {
+                                    this.score.best = Math.max(
+                                        this.score.curr,
+                                        localStorage.getItem("best") || 0
+                                    );
+                                    localStorage.setItem("best", this.score.best);
+                                    
+                                    // Draw scores at bottom right
+                                    sctx.fillText("SCORE: " + this.score.curr, scrn.width - 10, scrn.height - 30);
+                                    sctx.strokeText("SCORE: " + this.score.curr, scrn.width - 10, scrn.height - 30);
+                                    sctx.fillText("BEST: " + this.score.best, scrn.width - 10, scrn.height - 10);
+                                    sctx.strokeText("BEST: " + this.score.best, scrn.width - 10, scrn.height - 10);
+                                } catch (e) {
+                                    sctx.fillText("SCORE: " + this.score.curr, scrn.width - 10, scrn.height - 20);
+                                    sctx.strokeText("SCORE: " + this.score.curr, scrn.width - 10, scrn.height - 20);
+                                }
+                                break;
+                        }
+                    };
+
+                    // Also modify the pipe generation to be more consistent
+                    if (typeof pipe !== 'undefined' && pipe.update) {
+                        const originalPipeUpdate = pipe.update;
+                        
+                        pipe.update = function() {
+                            if (state.curr != state.Play) return;
+                            
+                            if (frames % 100 == 0) {
+                                // More consistent pipe heights - not too random
+                                const minHeight = -180;
+                                const maxHeight = -120;
+                                const height = minHeight + Math.random() * (maxHeight - minHeight);
+                                
+                                this.pipes.push({
+                                    x: parseFloat(scrn.width),
+                                    y: height
+                                });
+                            }
+                            
+                            this.pipes.forEach((pipe) => {
+                                pipe.x -= dx;
+                            });
+
+                            if (this.pipes.length && this.pipes[0].x < -this.top.sprite.width) {
+                                this.pipes.shift();
+                                this.moved = true;
+                            }
+                        };
+                    }
+                }
+            }, 500);
+        });
+    </script>
+</body>
+</html>

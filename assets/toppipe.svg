@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 320" width="52" height="320">
+  <!-- Main pipe -->
+  <rect width="52" height="320" fill="#2ecc71"/>
+  
+  <!-- Pipe border -->
+  <rect width="52" height="320" fill="none" stroke="#27ae60" stroke-width="2"/>
+  
+  <!-- Pipe end cap -->
+  <rect x="-5" y="300" width="62" height="20" fill="#27ae60" rx="2"/>
+  <rect x="-3" y="302" width="58" height="16" fill="#2ecc71" rx="1"/>
+  
+  <!-- Pipe highlights -->
+  <rect x="5" y="0" width="2" height="320" fill="#3ee485" opacity="0.3"/>
+  <rect x="10" y="0" width="1" height="320" fill="#3ee485" opacity="0.2"/>
+  
+  <!-- Pipe shadows -->
+  <rect x="40" y="0" width="3" height="320" fill="#229954" opacity="0.3"/>
+  <rect x="45" y="0" width="2" height="320" fill="#229954" opacity="0.2"/>
+  
+  <!-- End cap details -->
+  <rect x="0" y="304" width="52" height="2" fill="#229954" opacity="0.3"/>
+  <rect x="0" y="310" width="52" height="1" fill="#229954" opacity="0.2"/>
+</svg>
